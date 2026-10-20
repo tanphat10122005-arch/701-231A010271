@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Trả lời lý thuyết</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header><nav><a href="index.html">Trang chủ</a><a href="baitap01.html">Bài 1: Sản phẩm</a><a href="baitap02.html">Bài 2: Đăng ký</a><a href="baitap03.html">Bài 3: Đếm ngược</a><a href="lythuyet.html" class=active>Trả lời lý thuyết</a><a href="https://bai-23.netlify.app/den-keo-quan" target=_blank rel=noopener>Bài tập 23</a><a href="https://bai-23.netlify.app/bai22" target=_blank rel=noopener>Bài tập 22</a><a href="diemdanh.html">Thông tin điểm danh</a><a href="about.html">Giới thiệu</a><a href="contact.html">Liên hệ</a></nav></header><main>
+<h1>Trả lời lý thuyết</h1>
+
+<h2>Câu 1: position absolute và relative</h2>
+<p><b>relative</b>: phần tử vẫn nằm trong luồng, có thể dịch bằng top/left và trở thành mốc cho phần tử con absolute. <b>absolute</b>: phần tử rời khỏi luồng và định vị theo tổ tiên gần nhất có position khác static.</p>
+<pre>.card{position:relative}
+.badge{position:absolute;top:8px;right:8px}</pre>
+<p>Responsive: dùng relative cho khung chứa và absolute cho huy hiệu nhỏ, kết hợp đơn vị %, rem, flexbox. Tránh dùng absolute với tọa độ px cố định cho cả bố cục vì dễ chồng lấn trên màn hình nhỏ. Hosting chỉ phục vụ file tĩnh, nên độ tương thích phụ thuộc vào trình duyệt và thiết bị: cần thẻ meta viewport và kiểm tra bằng chế độ thiết bị của DevTools trước khi deploy.</p>
+<h2>Câu 2: Domain, hosting, DNS</h2>
+<p>Quy trình: (1) đăng ký tên miền ở nhà cung cấp; (2) đưa code lên hosting tĩnh; (3) khai báo bản ghi DNS (A hoặc CNAME) trỏ tên miền về hosting; (4) bật HTTPS. <b>DNS</b> là hệ thống dịch tên miền thành địa chỉ IP để trình duyệt tìm đúng máy chủ.</p>
+<p>Công cụ không cần server riêng: <b>GitHub Pages</b> (push code lên repo rồi bật Pages) và <b>Netlify</b> (kết nối GitHub, tự deploy mỗi lần commit).</p>
+<p>Rủi ro nếu cấu hình sai: không bật HTTPS (dữ liệu bị nghe lén), để lộ khóa API trong mã JavaScript hoặc repo công khai, trỏ DNS sai khiến subdomain bị chiếm quyền, để tên miền hết hạn bị người khác mua.</p>
+<h2>Câu 3: var, let, const</h2>
+<p><code>var</code> có phạm vi hàm, được hoisting và có giá trị <code>undefined</code> trước khi gán. <code>let</code> và <code>const</code> có phạm vi khối; chúng cũng được hoisting nhưng ở vùng chết tạm thời (TDZ), truy cập trước khai báo sẽ báo lỗi. <code>const</code> không gán lại được (nhưng nội dung đối tượng vẫn sửa được).</p>
+<pre>for (var i = 0; i &lt; 3; i++) setTimeout(() =&gt; console.log(i)); // 3 3 3
+for (let j = 0; j &lt; 3; j++) setTimeout(() =&gt; console.log(j)); // 0 1 2</pre>
+<p>Lỗi ở ví dụ đầu: cả ba hàm dùng chung một biến <code>i</code>. Cách debug: mở DevTools, vào Sources, đặt breakpoint trong vòng lặp, xem giá trị trong ô Scope/Watch và Console; sau đó đổi <code>var</code> thành <code>let</code>.</p>
+<h2>Câu 4: Event Delegation</h2>
+<p>Thay vì gắn sự kiện cho từng phần tử con, ta gắn một trình nghe ở phần tử cha và dựa vào cơ chế nổi bọt (bubbling) để biết phần tử nào được bấm qua <code>event.target</code>.</p>
+<pre>list.addEventListener('click', e =&gt; {
+  const li = e.target.closest('li');
+  if (li) li.classList.toggle('done');
+});
+list.append(document.createElement('li')); // mục thêm sau vẫn bấm được</pre>
+<p>Lợi ích: ít trình nghe hơn nên tiết kiệm bộ nhớ, phần tử thêm động vẫn hoạt động. Kết hợp CSS: chỉ đổi class (ví dụ <code>.done</code>) để trình duyệt áp style, giúp mã gọn và hiệu suất tốt hơn.</p>
+</main><footer>Trương Tấn Phát – 231A010271 – Đề thi kết thúc học phần Lập trình Web (Đề số 1)</footer></body></html>

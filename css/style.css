@@ -1,0 +1,29 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;background:#fbf3e2;color:#3b1410;line-height:1.6}
+header{background:#7a1712;position:sticky;top:0;z-index:5}
+nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 12px;max-width:1000px;margin:auto}
+nav a{color:#f6e7c8;text-decoration:none;padding:6px 10px;border-radius:4px;font-size:15px}
+nav a:hover,nav a.active{background:#b3261e}
+main{max-width:1000px;margin:auto;padding:16px}
+h1{color:#7a1712}
+footer{text-align:center;padding:20px;font-size:14px;opacity:.8}
+.avatar{width:140px;height:140px;border-radius:50%;object-fit:cover}
+input:not([type=checkbox]){width:100%;padding:10px;border:1px solid #b08a5a;border-radius:4px;font:inherit}
+button{padding:10px 18px;border:0;border-radius:4px;background:#b3261e;color:#fff;font:inherit;cursor:pointer}
+button:hover{background:#7a1712}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.card{background:#fff;padding:14px;border-left:6px solid #e8b44a;border-radius:4px}
+.card h3{margin:0 0 6px}
+.error{color:#b3261e;font-weight:bold}.ok{color:#1b7a2f;font-weight:bold}
+form{display:grid;gap:12px;max-width:420px}
+label{display:grid;gap:4px}label.check{display:flex;gap:8px;align-items:center}
+.clock{font-size:clamp(48px,14vw,110px);font-weight:bold;text-align:center;font-variant-numeric:tabular-nums}
+.clock.warn{color:#b3261e;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.3}}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+.modal[hidden]{display:none}
+.box{background:#fff;padding:28px 40px;border-radius:6px;text-align:center;font-size:22px}
+table{border-collapse:collapse;width:100%}th,td{border:1px solid #d9c49a;padding:8px;text-align:left;word-break:break-word}th{background:#f1dfb6;width:35%}
+pre{background:#2a0d0d;color:#f6e7c8;padding:12px;overflow-x:auto;border-radius:4px}
+code{background:#f1dfb6;padding:1px 4px;border-radius:3px}pre code{background:none}
+@media(prefers-reduced-motion:reduce){.clock.warn{animation:none}}

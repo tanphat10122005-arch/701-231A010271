@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bài 2: Form đăng ký</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header><nav><a href="index.html">Trang chủ</a><a href="baitap01.html">Bài 1: Sản phẩm</a><a href="baitap02.html" class=active>Bài 2: Đăng ký</a><a href="baitap03.html">Bài 3: Đếm ngược</a><a href="lythuyet.html">Trả lời lý thuyết</a><a href="https://bai-23.netlify.app/den-keo-quan" target=_blank rel=noopener>Bài tập 23</a><a href="https://bai-23.netlify.app/bai22" target=_blank rel=noopener>Bài tập 22</a><a href="diemdanh.html">Thông tin điểm danh</a><a href="about.html">Giới thiệu</a><a href="contact.html">Liên hệ</a></nav></header><main>
+<h1>Bài 2: Form đăng ký</h1>
+<form id="regForm" novalidate>
+<label>Tên<input name="fullname" required></label>
+<label>Email<input name="email" type="email" required></label>
+<label>Mật khẩu<input name="password" type="password" required autocomplete="new-password"></label>
+<label class="check"><input name="agree" type="checkbox"> Đồng ý điều khoản</label>
+<button type="submit">Đăng ký</button></form>
+<p id="formMsg" role="alert"></p>
+<h2>Giải thích logic</h2><ul><li>Sự kiện <code>submit</code>: gọi <code>preventDefault()</code>, kiểm tra từng trường, gom lỗi vào mảng rồi hiển thị. Chỉ khi không có lỗi mới lưu.</li><li>Email kiểm tra bằng regex; mật khẩu cần tối thiểu 8 ký tự, có chữ hoa, chữ thường và số.</li><li>Bảo mật cục bộ: không lưu mật khẩu thô; mật khẩu được băm SHA-256 (<code>crypto.subtle</code>) trước khi lưu vào LocalStorage. LocalStorage vẫn đọc được bằng JavaScript nên không nên lưu dữ liệu nhạy cảm thật; ứng dụng thật phải xác thực ở server.</li></ul>
+</main><footer>Trương Tấn Phát – 231A010271 – Đề thi kết thúc học phần Lập trình Web (Đề số 1)</footer><script src="js/script.js"></script></body></html>
